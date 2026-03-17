@@ -11,18 +11,11 @@ const WorkSamples = () => {
 
   // Animate the central black square's horizontal position
   // w-64 is 256px, so -128 is half of its width for centering
-  const squareX = -128; // First card is static, no horizontal animation
+  const squareX = useTransform(scrollYProgress, [0, 1], [-128, -128 - 500]); // Start at -128px (centered), move an additional 500px left
+
   // Vertical centering remains constant
   // h-64 is 256px, so -128 is half of its height for centering
-  const squareY = -128; // First card is static, no vertical animation
-
-  // Second card animation
-  const { scrollYProgress: scrollYProgress2 } = useScroll({
-    target: containerRef,
-    offset: ["start 0", "end end"], // Animation completes within ~10% of viewport scroll
-  });
-  const card2X = useTransform(scrollYProgress2, [0, 0.5, 1], [-1000, 0, 0]); // From far left, move to center, then stay
-  const card2Opacity = useTransform(scrollYProgress2, [0, 0.5, 1], [0, 1, 1]); // Fade in
+  const squareY = -128; // Apply -128px translateY to center vertically
 
   // Animate the background grid's opacity
   const gridOpacity = useTransform(scrollYProgress, [0, 1], [0.7, 0]); // Fade out grid over the same scroll range
@@ -35,7 +28,7 @@ const WorkSamples = () => {
   const infoAreaOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]); // Fade in from 0 to 1
 
   return (
-    <div ref={containerRef} className="relative w-full sticky top-0 z-50 h-[200vh] bg-[#f2efe9]"> {/* Increased height for scroll */}
+    <div ref={containerRef} className="relative w-full sticky top-0 z-50 h-screen bg-[#f2efe9]">
       {/* 1. 背景网格动画 */}
       <motion.div
         className="absolute inset-0"
@@ -78,30 +71,32 @@ const WorkSamples = () => {
         <div className="w-8 h-2 bg-black"></div>
       </div>
 
-      {/* 第一个卡片 */}
+      {/* 6. 中心黑色方块动画 */}
+      {/* left: "50%", top: "50%" 将元素左上角定位到中心 */}
+      {/* x: squareX, y: squareY 负责将元素自身的中心拉回到中心，并实现动画 */}
+      <motion.div
+        style={{ left: "50%", top: "50%", x: squareX, y: squareY, zIndex: 10 }}
+        className="absolute w-64 h-64 bg-black flex flex-col items-center justify-center text-white shadow-2xl p-8"
+      >
+        {/* 如果你有图片，可以直接把下面的内容替换为 <img /> */}
+        <div className="text-center">
+          <h1 className="text-5xl font-bold tracking-tight mb-1">WORK</h1>
+          <h1 className="text-5xl font-bold tracking-tight mb-4">SAMPLES</h1>
+          <div className="w-full h-[1px] bg-white/20 my-2"></div>
+          <p className="text-[8px] tracking-[0.3em] opacity-50 uppercase">
+            Damedanedameyo Damenanoyo
+          </p>
+        </div>
+      </motion.div>
+      {/* 6. 中心卡片动画 */}
+      {/* left: "50%", top: "50%" 将元素左上角定位到中心 */}
+      {/* x: squareX, y: squareY 负责将元素自身的中心拉回到中心，并实现动画 */}
       <motion.div
         style={{ left: "50%", top: "15%", zIndex: 10, opacity: verticalLineOpacity, perspective: "1000px" }}
         className="absolute w-[500px] h-[500px]"
       >
-        <ExampleCard 
-          imgSrc="/tc.png"
-          imgAlt="Operator"
-          cardHref="https://hcde-portfolio.webflow.io/"
-        />
+        <ExampleCard />
       </motion.div>
-
-      {/* 第二个卡片 */}
-      <motion.div
-        style={{ left: "50%", top: "60%", x: card2X, opacity: card2Opacity, zIndex: 10, perspective: "1000px" }}
-        className="absolute w-[500px] h-[500px]"
-      >
-        <ExampleCard
-          imgSrc="/tc.png" // You can change this to a different image
-          imgAlt="Second Operator"
-          cardHref="https://hcde-portfolio.webflow.io/"
-        />
-      </motion.div>
-
       {/* 7.--- 右侧：案例信息区 --- */}
       <motion.div
         style={{ x: infoAreaX, opacity: infoAreaOpacity }}

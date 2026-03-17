@@ -67,19 +67,13 @@ const OperatorCard = ({ children, href = "#" }) => {
 };
 
 // --- 展示示例 ---
-interface ExampleCardProps {
-  imgSrc: string;
-  imgAlt: string;
-  cardHref: string;
-}
-
-export default function ExampleCard({ imgSrc, imgAlt, cardHref }: ExampleCardProps) {
+export default function ExampleCard() {
   return (
-    <OperatorCard href={cardHref}>
+    <OperatorCard href="https://hcde-portfolio.webflow.io/">
       {/* 这里放你的图片 */}
       <img 
-        src={imgSrc} 
-        alt={imgAlt}
+        src="/tc.png" 
+        alt="Operator"
         className="w-full h-auto object-cover display-block"
       />
     </OperatorCard>

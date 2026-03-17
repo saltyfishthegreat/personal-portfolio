@@ -29,22 +29,14 @@ export default function RootLayout({
   const pathname = usePathname(); // Get current pathname
   const isWorkPage = pathname === "/work"; // Check if it's the work page
 
-  const bodyClassName = `${geistSans.variable} ${geistMono.variable} antialiased bg-custom-beige`;
+  const bodyClassName = `${geistSans.variable} ${geistMono.variable} antialiased ${
+    isWorkPage ? "bg-work-sample-bg" : "bg-custom-beige"
+  }`;
+
   return (
     <html lang="en">
       <body className={bodyClassName}>
         <PillNavbar />
-
-        {/* Video Background for all pages */}
-        <video
-          className="fixed inset-0 z-0 w-full h-full object-cover opacity-50"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="/bg.mp4"
-        />
-
         {isWorkPage ? (
           children // Render children directly for work page
         ) : (
