@@ -81,7 +81,7 @@ const Resume: React.FC = () => {
       duration: "[9, 2024] – [3, 2025]",
       description: [
         "Architected a mobile application to assist international students in adapting to local environments, utilizing social science frameworks to inform UX/UI design.",
-        "Conducted user research with [X] participants to identify pain points in cross-cultural adaptation, translating findings into [X] core functional requirements.",
+        "Conducted user research to identify pain points in cross-cultural adaptation and translated findings into actionable functional requirements.",
       ],
     },
     {
@@ -90,7 +90,7 @@ const Resume: React.FC = () => {
       duration: "[1, 2025] – [2, 2025]",
       description: [
         "Developed a comprehensive management application supporting user reservations, court scheduling, and tournament organization for local clubs.",
-        "Optimized administrative workflows, reducing manual scheduling time by [X]% and improving court utilization for a community of [X] players.",
+        "Optimized management workflows, resulting in improved court utilization and organizational efficiency for local sports communities.",
       ],
     },
     {
@@ -99,7 +99,7 @@ const Resume: React.FC = () => {
       duration: "[3，2025] – [6，2025]",
       description: [
         "Designed a circular economy solution for Trading Card Games (TCG) to minimize waste from low-value cards.",
-        "Validated the feasibility of the recycling model through [X] deep-dive user interviews and proposed a sustainability roadmap adopted by [X] local gaming stores.",
+        "Validated the feasibility of card recycling through user interviews and proposed an innovative sustainability roadmap for the gaming industry.",
       ],
     },
   ];
