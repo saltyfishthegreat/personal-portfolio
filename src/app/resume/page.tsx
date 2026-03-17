@@ -28,7 +28,7 @@ const TechQualificationsSection = () => (
 
 export default function ResumePage() {
   return (
-    <div className="container mx-auto py-12">
+    <div>
       <h1 className="text-4xl font-bold text-center mb-12">My Resume</h1>
       <EducationSection />
       <TechQualificationsSection />

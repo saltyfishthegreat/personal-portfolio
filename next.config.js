@@ -1,13 +1,12 @@
-/** @type {import('next').NextConfig} */const nextConfig = {
-  output: 'export',
-  basePath: '/personal-portfolio',
-  assetPrefix: '/personal-portfolio',
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'via.placeholder.com',
+        port: '',
+        pathname: '/**', // Allow all paths from this hostname
       },
     ],
   },
