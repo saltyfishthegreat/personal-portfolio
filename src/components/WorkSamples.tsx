@@ -28,7 +28,7 @@ const WorkSamples = () => {
   const infoAreaOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]); // Fade in from 0 to 1
 
   return (
-    <div ref={containerRef} className="relative w-full sticky top-0 z-50 h-screen bg-[#f2efe9]">
+    <div ref={containerRef} className="relative w-full sticky top-0 z-50 h-screen">
       {/* 1. 背景网格动画 */}
       <motion.div
         className="absolute inset-0"
